@@ -5,7 +5,7 @@ import time
     
 def to_full_open(motor):
     pos = 60
-    dc = degree_to_DC(pos)
+    dc = degree_to_DC(pos)   
 #     print(dc)
 #     print(motor)
     change_DC(motor, dc)
@@ -25,8 +25,7 @@ def grab(motor):
         
         
 gripper = motor_setup(13)
-to_full_open(gripper)
-grab(gripper)
+# to_full_open(gripper)
+# grab(gripper)
 
-gripper.stop()
-GPIO.cleanup()
+clean_up(gripper)

@@ -21,7 +21,7 @@ def cleanAndExit():
     sys.exit()
 
 #SET UP THE PINS
-hx = HX711(5, 6)
+hx = HX711(29, 31)
 hx.set_reading_format("MSB", "MSB")
 
 # HOW TO CALCULATE THE REFFERENCE UNIT

@@ -17,5 +17,7 @@ def change_DC(motor,dc):
     time.sleep(0.2)
     motor.ChangeDutyCycle(0)
     time.sleep(0.8)
-#     print("runned")
-#     print(dc)
+
+def clean_up(motor):
+    motor.stop()
+    GPIO.cleanup()

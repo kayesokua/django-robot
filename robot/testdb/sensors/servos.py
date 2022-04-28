@@ -1,33 +1,36 @@
-import RPi.GPIO as GPIO
 import time
+import RPi.GPIO as GPIO
 
-servoPIN = 17
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN, GPIO.OUT)
+servoPin=26
 
-def Script():
-  print("grab")
+#position 9 = wrist facing front
+#position 9 start should be 2
+Positions = [1,2,3,4,5,6,7,8,9,10,11,12]
 
-p = gpio.PWM(servoPIN, 50) # GPIO 17 for PWM with 50Hz
-p.start(2.5) # Initialization
-try:
-  while True:
-    p.ChangeDutyCycle(5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(7.5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(10)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(12.5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(10)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(7.5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(5)
-    time.sleep(0.5)
-    p.ChangeDutyCycle(2.5)
-    time.sleep(0.5)
-except KeyboardInterrupt:
-  p.stop()
-  gpio.cleanup()
+GPIO.setup(servoPin, GPIO.OUT)
+pwm=GPIO.PWM(servoPin,50)
+pwm.start(0)
+
+for angle in range(1,180):
+    dc=1./18.* (float(angle)) + 2
+    pwm.ChangeDutyCycle(dc)
+    print("position:",angle)
+    print("DC:",dc)
+    time.sleep(0.015)
+
+print("reverseeeeee")
+print("reverseeeeee")
+print("reverseeeeee")
+
+time.sleep(3)
+
+for angle2 in range(90,2,-1):
+    dc=1./18.* (float(angle2)) + 2
+    pwm.ChangeDutyCycle(dc)
+    print("position:",angle)
+    print("DC:",dc)
+    time.sleep(0.015)
+
+pwm.stop()
+GPIO.cleanup()

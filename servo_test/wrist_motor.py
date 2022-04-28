@@ -3,16 +3,19 @@ import RPi.GPIO as GPIO
 import time
 
 def pour(motor) :
-    pos = 100
+    pos = 80
     dc = degree_to_DC(pos)
     change_DC(motor,dc)
     
 def homing(motor):
-    pos = 0
+    pos = 180
     dc = degree_to_DC(pos)
     change_DC(motor,dc)
     
 wrist = motor_setup(11)
-homing(wrist)
-pour(wrist)
-homing(wrist)
+# homing(wrist)                        
+# pour(wrist)
+# homing(wrist)
+
+
+clean_up(wrist)

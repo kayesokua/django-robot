@@ -1,16 +1,18 @@
+from gripper_motor import *
 from wrist_motor import *
+from upper_arm import *
+from lower_arm import *
+from waist import *
+
 import time
 import sys
+import RPi.GPIO as GPIO
+from hx711 import HX711
 
-EMULATE_HX711=False
 
 referenceUnit = 1
 
-if not EMULATE_HX711:
-    import RPi.GPIO as GPIO
-    from hx711 import HX711
-else:
-    from emulated_hx711 import HX711
+
 
 def cleanAndExit():
     print("Cleaning...")
@@ -21,22 +23,21 @@ def cleanAndExit():
     print("Bye!")
     sys.exit()
 
-hx = HX711(5, 6)
+hx = HX711(31,29)
 hx.set_reading_format("MSB", "MSB")
-hx.set_reference_unit(476)
-
+hx.set_reference_unit(343690/720.3)
 hx.reset()
-
 hx.tare()
 
-wrist = motor_setup(11)
+
 while True:
-    try:
-        val = hx.get_weight(5)
-        print(val)
-        if val >=71:
-            homing(wrist)
-            pour(wrist)
-            homing(wrist)
-            
-        
+    val = hx.get_weight(5)
+    print(val)
+#     if val >=75:
+#         homing
+#         homing(waist)
+#         break
+    hx.power_down()
+    hx.power_up()
+    time.sleep(0.1)
+
