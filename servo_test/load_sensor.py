@@ -29,13 +29,15 @@ hx.set_reference_unit(343690/720.3)
 hx.reset()
 hx.tare()
 
+#fuction should be call after reaching homing position
 
 while True:
     val = hx.get_weight(5)
     print(val)
 #     if val >=75:
-#         homing
-#         homing(waist)
+#         end-effector should turn to the bottle position
+#         grab bottle and turn to the load sensor position
+#         pour
 #         break
     hx.power_down()
     hx.power_up()

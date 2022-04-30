@@ -5,9 +5,9 @@ from cmath import acos, atan, sqrt
 # from lower_arm import *
 # from waist_motor import *
 
-X = 10.0 # desired X position of end-effector
+X = -20 # desired X position of end-effector
 Y = 0.0 # desired X position of end-effector
-Z = 5.0 # desired X position of end-effector
+Z = 25.0 # desired X position of end-effector
 a1= 16 #cm
 a2= 11.4 #cm
 a3= 14.8 #cm
