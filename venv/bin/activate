@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/kaye/Desktop/2022/django-robot/venv"
+VIRTUAL_ENV="/Users/sijia/Desktop/2022 Spring semester/Barkeeping robot/django-robot/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -7,9 +7,8 @@ def homing(motor):
     dc = degree_to_DC(pos)
     change_DC(motor,dc)
     
-def lower(motor):
-    pos = 120
-    dc = degree_to_DC(pos)
+def turn(motor, degree):
+    dc = degree_to_DC(degree)
     change_DC(motor,dc)
     
 upper_arm = motor_setup(15)
